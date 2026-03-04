@@ -73,15 +73,15 @@ TOOL_PERSONAS = {
     "ChatGPT": {
         "rating_range": (2, 7),
         "strengths": [
-            "good for concepts",
-            "solid for quick explanations",
-            "helps when i'm stuck",
-            "great for summaries"
+            "good for understanding concepts and high level research",
+            "solid for quick explanations, clean UI",
+            "long context window helps in brainstorming for big projects",
+            "great for writing clean summaries"
         ],
         "weaknesses": [
-            "gets lost in real builds",
+            "gets lost in complex builds",
             "hallucinates under pressure",
-            "not reliable for full projects",
+            "not reliable for projects with multiple integrations",
             "mid at actual implementation"
         ]
     },
@@ -89,14 +89,14 @@ TOOL_PERSONAS = {
     "Claude": {
         "rating_range": (6, 9),
         "strengths": [
-            "handles long prompts better than GPT",
+            "handles long prompts way better than GPT",
             "thinks more clearly through edge cases",
             "more structured outputs",
             "better reasoning overall"
         ],
         "weaknesses": [
-            "slower sometimes",
-            "not as mainstream",
+            "can be slower sometimes",
+            "not as mainstream or creative as GPT",
             "UI could be better"
         ]
     },
@@ -104,29 +104,29 @@ TOOL_PERSONAS = {
     "Cursor": {
         "rating_range": (5, 9),
         "strengths": [
-            "clean UI",
-            "great inline suggestions",
+            "intuitive UI if you're into coding already",
+            "great inline suggestions make things faster",
             "fast for quick edits",
-            "feels built for devs"
+            "feels tailor built for devs"
         ],
         "weaknesses": [
-            "crashes on full builds",
-            "breaks too often",
-            "unstable on big projects"
+            "can crash during full builds",
+            "breaks too often if handling long contexts",
+            "little unstable on big projects"
         ]
     },
 
     "Replit": {
         "rating_range": (6, 8),
         "strengths": [
-            "easy to spin up projects",
-            "good for quick prototypes",
-            "saves setup time"
+            "easy to spin up small and medium scale projects",
+            "good for building quick prototypes",
+            "saves a lot of setup time"
         ],
         "weaknesses": [
             "not ideal for large scale work",
             "limited compared to local dev",
-            "performance dips sometimes"
+            "performance can dip while handling larger contexts"
         ]
     },
 
@@ -135,11 +135,11 @@ TOOL_PERSONAS = {
         "strengths": [
             "handles long prompts well",
             "surprisingly solid for reasoning",
-            "underrated tool"
+            "underrated tool (because it's chinese)"
         ],
         "weaknesses": [
             "not mainstream yet",
-            "trust factor is lower",
+            "trust factor is lower than GPT and Claude",
             "less community support"
         ]
     },
@@ -147,12 +147,13 @@ TOOL_PERSONAS = {
     "Lovable.dev": {
         "rating_range": (8, 11),  # allow exaggerated viral rating
         "strengths": [
-            "actually saved me",
+            "actually saved me in lot of projects",
             "builds the site from what i describe",
+            "builds an app from what i describe",
             "carried most of my workload"
         ],
         "weaknesses": [
-            "not perfect",
+            "not perfect yet",
             "still needs manual cleanup",
             "breaks on edge cases"
         ]
@@ -161,14 +162,14 @@ TOOL_PERSONAS = {
     "Perplexity": {
         "rating_range": (5, 8),
         "strengths": [
-            "great for research",
-            "fast answers with sources",
-            "good for quick context"
+            "great for focused research, reliable citations",
+            "fast answers with reliable sources",
+            "good for structured outputs"
         ],
         "weaknesses": [
-            "not for heavy coding",
-            "limited depth",
-            "better for info than builds"
+            "not built for heavy coding",
+            "limited technical depth",
+            "better for gathering info than full builds"
         ]
     },
 
@@ -188,14 +189,14 @@ TOOL_PERSONAS = {
     "Github Copilot": {
         "rating_range": (6, 9),
         "strengths": [
-            "good autocomplete",
-            "fast inline suggestions",
-            "saves typing time"
+            "good autocomplete can speed up work",
+            "fast inline suggestions that actually help",
+            "saves a lot of typing time"
         ],
         "weaknesses": [
             "not smart for architecture",
-            "just predicts next line",
-            "doesn't think deeply"
+            "just predicts next line without taking full context",
+            "doesn't think as deeply"
         ]
     }
 }
@@ -206,8 +207,8 @@ TOOL_PERSONAS = {
 
 CONTROVERSY_LINES = [
     "people hype this too much.",
-    "lowkey overrated on twitter.",
-    "only reason it’s not viral is cause people don’t know about it.",
+    "lowkey overrated on tech twitter.",
+    "only reason it’s not viral is cause mainstream people don’t know about it.",
     "everyone pretends they use this more than they do."
 ]
 

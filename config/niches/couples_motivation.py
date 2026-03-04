@@ -31,29 +31,6 @@ HOOK_TEMPLATES = [
 ]
 
 # ----------------------------
-# TIP LIBRARY (starter set)
-# Each must be 8–16 words.
-# ----------------------------
-
-TIP_LIBRARY = [
-    "Communicate honestly even when the conversation feels uncomfortable.",
-    "Choose your partner daily, not only when it feels easy.",
-    "Respect boundaries and honor emotional safety at all times.",
-    "Listen fully before trying to fix or defend.",
-    "Support each other’s growth without feeling threatened.",
-    "Resolve conflict calmly instead of escalating tension.",
-    "Express appreciation for small efforts consistently.",
-    "Protect your relationship from outside negativity.",
-    "Stay loyal in action, not just in words.",
-    "Make time for intentional connection every week.",
-    "Be emotionally available during difficult moments.",
-    "Apologize sincerely without shifting blame.",
-    "Celebrate each other’s wins genuinely.",
-    "Keep learning how your partner feels loved.",
-    "Maintain trust through consistent behavior."
-]
-
-# ----------------------------
 # ANCHOR QUOTES
 # ----------------------------
 

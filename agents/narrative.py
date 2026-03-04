@@ -20,28 +20,23 @@ class NarrativeAgent:
         # ==================================================
         if niche_type == "couples":
 
-            slides = blueprint["slides"]
-            num_rules = len([s for s in slides if s["type"] == "tip"])
+            hook = blueprint["hook"]
+            num_tips = blueprint["num_tips"]
 
             prompt = f"""
-You are creating a viral Instagram carousel for relationship motivation.
+You are writing slides for a viral Instagram relationship carousel.
 
-Structure:
-- Slide 1: Hook headline
-- Slides 2–{num_rules+1}: Numbered relationship principles (1 to {num_rules})
-- Final Slide: Short emotional closing line (max 6 words)
+Generate exactly {num_tips} relationship principles, then one short closing line.
 
 Rules:
-- Keep each rule under 16 words.
-- Keep tone emotionally mature and calm.
-- Avoid clichés.
-- Avoid dramatic language.
-- Sound psychologically insightful.
-- Make it aspirational, not preachy.
-- Do not mention Instagram.
-- Do not add extra slides.
-- Ensure the number in headline matches rule count.
-- Return ONLY the slides, one per line, properly numbered.
+- Each principle must be under 16 words.
+- Tone: emotionally mature, calm, psychologically insightful.
+- Avoid clichés and dramatic language.
+- Aspirational, not preachy.
+- Number each principle (1. 2. 3. etc).
+- Final line: short emotional closing (max 6 words), no number.
+- Return ONLY the numbered principles and the closing line, one per line.
+- Do not include a hook or title line.
 
 Generate now.
 """
@@ -53,11 +48,13 @@ Generate now.
 
             content = response.choices[0].message.content.strip()
 
-            return [
+            gpt_lines = [
                 re.sub(r'\([A-Za-z_]+\)\s*', '', line).strip()
                 for line in content.split("\n")
                 if line.strip()
             ]
+
+            return [hook] + gpt_lines
 
         # ==================================================
         # AI TOOLS NICHE

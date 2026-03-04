@@ -21,34 +21,10 @@ class StrategyAgent:
             hook_template = random.choice(self.niche.HOOK_TEMPLATES)
             hook = hook_template.replace("{X}", str(X))
 
-            slides = []
-
-            # Slide 1 → Hook
-            slides.append({
-                "type": "hook",
-                "text": hook
-            })
-
-            # Slides 2–X → Tips
-            tips = random.sample(self.niche.TIP_LIBRARY, X)
-
-            for i, tip in enumerate(tips):
-                slides.append({
-                    "type": "tip",
-                    "text": f"{i+1}. {tip}"
-                })
-
-            # Final Slide → Anchor (only couples use this)
-            if rules.get("include_anchor", True):
-                anchor = random.choice(self.niche.ANCHOR_QUOTES)
-                slides.append({
-                    "type": "anchor",
-                    "text": anchor
-                })
-
             return {
                 "niche_type": "couples",
-                "slides": slides
+                "hook": hook,
+                "num_tips": X,
             }
 
         # =====================================================

@@ -10,19 +10,22 @@ Portrait orientation 4:5.
 
 Environmental composition.
 Background clearly visible and detailed.
-Environment must occupy more space than the subject.
+Environment must dominate the frame — far more visible than the subject.
 
-Subject positioned slightly off-center.
-Not symmetrical.
-Not centered in frame.
-
-Subject occupies approximately 35–45% of total frame height.
+Full body visible from head to feet.
 Not tightly cropped.
-Upper body and surrounding environment visible.
-Allow headroom above subject for text placement.
+Not zoomed in.
 
-Camera perspective slightly pulled back.
-Not zoomed-in portrait framing.
+Subject placed in lower half or lower center of frame.
+Subject positioned slightly off-center horizontally.
+Not symmetrical.
+
+Subject occupies approximately 50–65% of total frame height.
+At least one-quarter of total frame height must be clear negative space above subject's head.
+This headroom is critical — background must extend well above the subject.
+
+Camera perspective pulled back.
+Wide enough that the environment above and around the subject feels expansive.
 Feels like a documentary sports photograph.
 """
 
@@ -36,14 +39,13 @@ No orange tones.
 """
 
 MENS_FITNESS_LIGHTING = """
-Natural gym lighting or overcast daylight.
-Even lighting across subject and environment.
-No dramatic spotlighting.
-No strong rim lighting.
-No heavy shadows.
-No high-contrast moody lighting.
-Very subtle natural vignette at frame edges.
-Not heavy.
+Moody, slightly underexposed atmosphere.
+Background darker than subject — subject stands out from environment.
+Overhead gym lighting or overcast daylight with natural directional shadows.
+Moderate contrast — not flat, not blown out.
+Subtle vignette at frame edges pulling focus toward subject.
+No artificial rim lighting.
+No studio strobe flash.
 """
 
 MENS_FITNESS_STYLE = """

@@ -83,6 +83,14 @@ ARCHETYPES = {
 
     "visual_archetypes": {
 
+        # HOOK VISUALS — physique display, not exercise execution
+        "hook": [
+            "well-built man in a cut-off sleeveless vest doing front double bicep flex in industrial gym, visible muscle definition, gym equipment blurred in background, direct overhead lighting",
+            "muscular man in sleeveless gym vest standing facing locker room mirror in side chest pose, gym bag on bench, cool fluorescent lighting",
+            "athletic man in cut-off tank top flexing lat spread on outdoor rooftop training area, overcast natural light, open sky above with strong headroom",
+            "well-built man in sleeveless vest posing in gym doorway backlit by natural light, arms raised in relaxed flex, candid documentary feel",
+        ],
+
         # DEADLIFT VISUALS
         "deadlift": [
             "man mid-pull on heavy barbell deadlift, bar just below knees, chalk dust in air, industrial gym",
@@ -124,34 +132,4 @@ ARCHETYPES = {
             "man performing pistol squat on outdoor platform, strong balance control",
         ],
     }
-}
-
-# =========================================================
-# LAYOUT OPTIONS (UNCHANGED)
-# =========================================================
-
-LAYOUT_ARCHETYPES = {
-    "editorial_cover": """
-    editorial cinematic composition,
-    magazine cover style framing,
-    strong subject presence,
-    structured atmospheric negative space,
-    designed for bold central headline overlay
-    """,
-
-    "dramatic_silhouette": """
-    dramatic cinematic lighting,
-    subject slightly offset,
-    strong shadow contrast,
-    powerful silhouette framing,
-    negative space balanced for headline text
-    """,
-
-    "environmental_wide": """
-    environmental wide shot,
-    subject integrated into powerful setting,
-    strong depth and atmosphere,
-    cinematic landscape composition,
-    space designed for bold headline overlay
-    """
 }

@@ -59,7 +59,7 @@ Emergency phone cabinet or intercom panel mounted below the buttons.
 
 Ceiling lights clearly visible at top.
 
-Young {race} male computer science student.
+Young {race} male computer science student with a confident expression on his face.
 {hairstyle} hairstyle.
 Casual oversized hoodie.
 Backpack straps visible.
@@ -306,8 +306,8 @@ No text in image.
                 if category in archetypes:
                     scene = random.choice(archetypes[category])
                 else:
-                    # Hook fallback → use deadlift aesthetic (strongest anchor)
-                    scene = random.choice(archetypes["deadlift"])
+                    # Hook slide → use dedicated physique/flex visuals
+                    scene = random.choice(archetypes["hook"])
 
                 prompt = f"""
 Ultra realistic athletic photograph.

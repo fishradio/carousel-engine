@@ -16,7 +16,7 @@ class TypographyEngine:
             self.title_font_path = "fonts/Arial Bold.ttf"
             self.body_font_path = "fonts/Arial.ttf"
         else:
-            self.font_path = "fonts/BebasNeue-Regular.ttf"
+            self.font_path = "fonts/InterVariable.ttf"
 
     def add_text_overlay(self, image_path, text, output_path, is_hook=False):
 
@@ -146,10 +146,10 @@ class TypographyEngine:
 
         else:  # men's motivation
 
-            font_size = int(height * 0.06)
-            max_width_ratio = 0.70
-            y_position = 0.40
-            line_spacing = 6
+            font_size = int(height * 0.032)
+            max_width_ratio = 0.80
+            y_position = 0.55
+            line_spacing = 5
 
         font = ImageFont.truetype(self.font_path, font_size)
 
@@ -216,7 +216,7 @@ class TypographyEngine:
                 wrapped_text,
                 font=font,
                 fill="white",
-                stroke_width=4,
+                stroke_width=3,
                 stroke_fill="black",
                 anchor="mm",
                 align="center",

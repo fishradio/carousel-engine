@@ -1,382 +1,184 @@
-AI Viral Carousel Content Engine
+# AI Viral Carousel Content Engine
 
-A modular, AI-powered Python system for generating high-quality, niche-optimized Instagram carousel posts with consistent branding, structured virality mechanics, and scalable multi-niche architecture.
+A modular, AI-powered Python system for generating niche-optimized TikTok carousel posts — with structured virality mechanics, psychological visual archetypes, and a scalable multi-niche architecture.
 
-🚀 Project Vision
+---
 
-This project is a multi-agent content generation engine designed to:
+## Project Overview
 
-Generate viral-style Instagram carousel posts
+This engine is not an image generator. It is a **structured content system** that encodes psychological triggers, visual persuasion logic, and narrative escalation into every slide — separately per niche.
 
-Support multiple niches (e.g., Men’s Motivation, Couples Motivation)
+Each niche has its own:
+- Content structure and hook strategy
+- Visual archetype pool
+- Typography style
+- Image composition doctrine
 
-Separate structure, narrative, visuals, and typography into modular layers
+---
 
-Encode psychological archetypes into both text and imagery
+## Architecture
 
-Scale into a content factory
-
-This is not just an image generator — it is a structured aesthetic system.
-
-🧠 Core Objectives
-
-Build a modular multi-niche architecture
-
-Separate narrative psychology from visual psychology
-
-Generate image prompts aligned with layout constraints
-
-Apply niche-aware typography styling
-
-Ensure deterministic visual sequencing
-
-Maintain scalability for future niches
-
-Demonstrate strong AI + systems design capability
-
-🏗 High-Level Architecture
+```
 project_root/
 │
-├── main.py
+├── main.py                        # Pipeline orchestrator
 │
 ├── agents/
-│   ├── strategy.py
-│   ├── narrative.py
-│   ├── visual.py
-│   └── image.py
+│   ├── strategy.py                # Blueprint builder — structure, hooks, goal pools
+│   ├── narrative.py               # Text layer — deterministic or GPT depending on niche
+│   ├── visual.py                  # Image prompt builder — routes by slide category
+│   └── image.py                   # OpenAI image generation
 │
 ├── design/
-│   └── typography.py
+│   ├── layout.py                  # Shared visual constants (composition, lighting, color)
+│   └── typography.py              # Niche-aware text overlay engine
 │
 ├── config/
 │   └── niches/
 │       ├── mens_motivation.py
-│       └── couples_motivation.py
+│       ├── couples_motivation.py
+│       └── ai_tools.py
 │
 ├── fonts/
-│   ├── BebasNeue-Regular.ttf
-│   └── Montserrat-VariableFont_wght.ttf
+│   ├── InterVariable.ttf
+│   ├── Arial Bold.ttf
+│   └── Arial.ttf
 │
 └── output/
-🔄 Execution Flow
+    ├── mens_motivation/
+    ├── couples_motivation/
+    └── ai_tools/
+```
 
-main.py orchestrates the full pipeline:
+---
 
-StrategyAgent 
-    → NarrativeAgent 
-        → VisualAgent 
-            → ImageAgent 
-                → TypographyEngine
-Step-by-step:
+## Execution Flow
 
-Load niche configuration
+```
+StrategyAgent → NarrativeAgent → VisualAgent → ImageAgent → TypographyEngine
+```
 
-Build structural blueprint
+1. Load niche config
+2. `StrategyAgent` builds a structured blueprint (slide types, hook, goal pools)
+3. `NarrativeAgent` produces final slide text (deterministic or GPT)
+4. `VisualAgent` converts slide metadata into image prompts, routed by category
+5. `ImageAgent` generates images via OpenAI
+6. `TypographyEngine` applies niche-specific text overlay and exports slides
 
-Enhance narrative via AI
+---
 
-Generate image prompts
+## Niches
 
-Generate images via OpenAI
+### Men's Motivation — Fully Deterministic
 
-Apply typography styling
+**Philosophy:** Every slide maps to a specific fitness category. No GPT involved.
 
-Save final carousel slides
+- Hook picked from `hook_templates` pool
+- 5 goals selected one-per-category: deadlift, squat, running, cycling, bodyweight
+- Each slide gets a unique image matched to its category's visual archetype pool
+- Hook slide uses a dedicated physique/flex visual pool (distinct from all exercise slides)
+- **6 slides total, 6 unique images**
 
-📁 Folder & File Responsibilities
-agents/strategy.py
+### Couples Motivation — Hybrid (GPT for tips only)
 
-Role: Structural blueprint generator
+**Philosophy:** Hook is deterministic. Relationship principles and closing line are GPT-generated.
 
-Defines slide structure
+- Hook locked from curated `HOOK_TEMPLATES`, count X drawn randomly within bounds
+- GPT generates exactly X numbered relationship principles + one short closing line
+- Images follow a fixed cinematic scene sequence, independent of text content
+- **Variable slide count, one unique image per slide**
 
-Handles niche branching
+### AI Tools Ranking — Fully Deterministic
 
-Controls rule count for list-based niches
+**Philosophy:** Persona-driven authority content. A fictional student identity rates AI tools weak-to-strong.
 
-Returns structured blueprint dictionary
+- Identity (e.g. "CS student") and institution (e.g. "MIT") locked at blueprint stage
+- Tools sampled from `TIP_LIBRARY`, sorted by average rating strength (weak → strong curve)
+- **2 images only**: hook (elevator mirror selfie) + one shared campus workspace background
+- All rating slides reuse the same background with different text overlays
 
-Couples (List-Based)
+---
 
-Dynamic rule count
+## Agent Responsibilities
 
-Hook + numbered tips + anchor
+### `agents/strategy.py`
+Builds the structural blueprint per niche. Defines slide types, picks hooks, samples from goal/tool pools, and returns a typed dict consumed by downstream agents.
 
-Men’s (Escalation-Based)
+### `agents/narrative.py`
+- **Mens:** passthrough — reads `base_text` from blueprint slides as-is, no transformation
+- **Couples:** calls GPT-4o-mini to generate tips and closing line; prepends hook in code
+- **AI Tools:** calls `build_rating_slide()` per tool deterministically; no GPT
 
-Predefined narrative arc
+### `agents/visual.py`
+Routes each slide's `category` field to the matching archetype pool in the niche config. For mens slides, each category (deadlift, squat, running, cycling, bodyweight, hook) maps to its own distinct scene list. Wraps scenes in shared layout/lighting/color/style constants from `design/layout.py`.
 
-Identity → pain → power → closure
+### `agents/image.py`
+Sends prompts to the OpenAI image API and saves results to the output directory.
 
-agents/narrative.py
+### `design/layout.py`
+Defines shared visual doctrine applied to all mens slides:
+- `MENS_FITNESS_LAYOUT` — composition, framing, headroom rules
+- `MENS_FITNESS_COLOR` — cool-toned grading
+- `MENS_FITNESS_LIGHTING` — moody, underexposed atmosphere
+- `MENS_FITNESS_STYLE` — candid documentary feel, not influencer aesthetic
 
-Role: AI text enhancement layer
+### `design/typography.py`
+Niche-aware text overlay engine. Handles word wrapping, font scaling, vertical positioning, and stroke styling. Each niche has its own font, size, position, and rendering style.
 
-Couples Mode
+| Niche | Font | Style |
+|---|---|---|
+| Men's Motivation | Inter Variable | White fill, black stroke, lower-center anchor |
+| Couples Motivation | Inter Variable | White fill, soft drop shadow, mid-frame anchor |
+| AI Tools | Arial Bold / Arial | White rounded boxes, top-anchored hook |
 
-Generates dynamic rule count
+---
 
-Ensures headline matches rule count
+## Adding a New Niche
 
-Produces numbered relationship principles
-
-Adds short emotional closing line
-
-Enforces word limits
-
-Men’s Mode
-
-Rewrites escalation narrative
-
-Intensifies emotional tension
-
-Maintains slide order
-
-Applies word constraints
-
-This layer encodes psychological persuasion logic.
-
-agents/visual.py
-
-Role: Converts slides into image prompts
-
-Couples Mode
-
-Deterministic visual rhythm
-
-Environment-dominant composition
-
-Tiny silhouettes
-
-Memory-style framing
-
-Strong negative space
-
-Avoids face-centric imagery
-
-Men’s Mode
-
-Dark cinematic aesthetic
-
-Single dominant subject
-
-Low-angle framing
-
-High contrast, moody tone
-
-This layer encodes visual psychology.
-
-agents/image.py
-
-Role: Image generation layer
-
-Sends prompts to OpenAI image API
-
-Receives generated images
-
-Saves images in output directory
-
-Maintains naming consistency
-
-This layer handles AI image generation.
-
-design/typography.py
-
-Role: Niche-aware typography styling engine
-
-Men’s Style
-
-Font: Bebas Neue
-
-All caps
-
-Strong outline stroke
-
-High contrast
-
-Aggressive composition
-
-Couples Style
-
-Font: Montserrat
-
-Sentence case
-
-Soft vignette
-
-Subtle shadow
-
-Editorial warmth
-
-Center alignment
-
-Handles:
-
-Word wrapping
-
-Font scaling
-
-Alignment
-
-Styling
-
-Export
-
-This layer defines brand identity.
-
-config/niches/
-
-Each niche module defines:
-
-NICHE_TYPE
-
-STRUCTURE_RULES
-
-HOOK_TEMPLATES
-
-TIP_LIBRARY
-
-ANCHOR_QUOTES
-
-VISUAL_PROFILE
-
-VISUAL_ARCHETYPES
-
-This isolates:
-
-Tone
-
-Emotional direction
-
-Structural constraints
-
-Image mood
-
-Adding a new niche requires only creating a new config file.
-
-🔥 Implemented Niches
-1. Men’s Motivation
-
-Escalation narrative structure
-
-Psychological dominance themes
-
-Dark cinematic aesthetic
-
-Identity-driven tension build
-
-Philosophy:
-
-The subject is the hero.
-
-2. Couples Motivation
-
-Structured list format
-
-Dynamic rule counts
-
-Aspirational intimacy
-
-Landscape-dominant imagery
-
-Memory-based framing
-
-Philosophy:
-
-The environment is the hero.
-
-🎯 System Innovations
-
-Niche-aware branching architecture
-
-Deterministic visual sequencing
-
-Psychological archetype encoding
-
-Typography profiles per niche
-
-Blueprint abstraction layer
-
-Visual logic separated from narrative logic
-
-Modular design for infinite expansion
-
-📈 Scalability Design
-
-To add a new niche:
-
-Create new file in config/niches/
-
-Define structure rules
-
-Define visual archetypes
-
-Define visual profile
-
-Return correct niche_type in strategy
-
-Add typography style if required
+1. Create `config/niches/your_niche.py` — define hooks, content pools, visual archetypes
+2. Add a branch in `agents/strategy.py` returning `niche_type` and blueprint structure
+3. Add a branch in `agents/narrative.py` for text generation logic
+4. Add a branch in `agents/visual.py` for image prompt construction
+5. Add typography settings in `design/typography.py` if the style differs
+6. Select the niche in `main.py`
 
 No core engine rewrite required.
 
-⚙️ Current Engineering Challenges
+---
 
-Avoiding AI-generated stock faces
+## Setup & Usage
 
-Maintaining aspirational projection
+**1. Install dependencies**
+```bash
+pip install -r requirements.txt
+```
 
-Matching rule count to headline
+**2. Set environment variables**
+```bash
+# .env
+OPENAI_API_KEY=your_key_here
+```
 
-Preventing visual repetition
+**3. Select niche in `main.py`**
+```python
+NICHE = "mens_motivation"  # "couples_motivation" | "ai_tools"
+```
 
-Ensuring typography readability on warm tones
-
-Enforcing environment-dominant framing
-
-🔮 Future Enhancements
-
-Face detection to prevent text overlap
-
-Contrast-aware typography adjustment
-
-Carousel-to-video animation engine
-
-A/B aesthetic testing
-
-Scene entropy tracking
-
-Multi-language support
-
-Web UI wrapper
-
-Cloud deployment
-
-🧠 System Philosophy
-
-This engine is not just generating content.
-
-It is encoding:
-
-Psychological triggers
-
-Visual persuasion
-
-Structured narrative escalation
-
-Brand-consistent aesthetic identity
-
-Each niche behaves differently because each niche sells a different emotional fantasy.
-
-🏁 How to Run
-
-Set your OpenAI API key in .env
-
-Choose niche in main.py
-
-Run:
-
+**4. Run**
+```bash
 python main.py
+```
 
-Generated slides will appear in:
+Output slides are saved to `output/{niche}/slide_1.png`, `slide_2.png`, etc.
 
-/output
+---
+
+## Future Enhancements
+
+- Face detection to prevent text overlap
+- Contrast-aware typography adjustment
+- A/B aesthetic testing across prompt variants
+- Scene entropy tracking to avoid visual repetition
+- Carousel-to-video animation export
+- Web UI wrapper
+- Cloud deployment

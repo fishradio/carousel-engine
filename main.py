@@ -11,7 +11,7 @@ from design.typography import TypographyEngine
 # Options: "ai_tools" | "couples_motivation" | "mens_motivation"
 # =====================================================
 
-NICHE = "mens_motivation"
+NICHE = "ai_tools"
 
 # ---------------------------
 # Load niche module
@@ -74,7 +74,7 @@ if __name__ == "__main__":
         blueprint.get("visual_archetypes", {}),
         niche_type=niche_type
     )
-
+    
     # ---------------------------
     # Prepare output directory
     # ---------------------------
